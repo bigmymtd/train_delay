@@ -1,14 +1,16 @@
 class Main
-  require './train_delay_info_repository.rb'
-  require './delay_statuses.rb'
+  load './train_delay_info_repository.rb'
+  load './delay_statuses.rb'
 
   include TrainDelayInfoRepository
   include DelayStatuses
 
   def initialize
-    get_train_delay_list.train_delay.each do |list|
-      text = list.delay_status.status == DELAY_STATUSES[:normal].status ? "平常運転です" : "#{list.delay_status.status}で#{list.delay_time.time}分遅れです"
-      p "#{list.line.name}は#{text}"
+    get_train_delay_list.train_delay.each do |train_delay|
+      line = train_delay.line.name
+      status = train_delay.delay_status
+      delay_time_text = train_delay.instance_variable_defined?(:@delay_time) ? "#{train_delay.delay_time.time}分遅れが出ています。" : ""
+      p "#{line}は#{status}です。#{delay_time_text}"
     end
   end
 end

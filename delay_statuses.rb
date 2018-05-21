@@ -1,9 +1,11 @@
 module DelayStatuses
-  require './delay_status.rb'
+  load './delay_status.rb'
 
   DELAY_STATUSES = {
-      normal: DelayStatus.new('通常'),
-      delay: DelayStatus.new('遅延')
+      normal: DelayStatus.new('正常'),
+      delay: DelayStatus.new('遅延'),
+      stop: DelayStatus.new('運行中止'),
+      unknown: DelayStatus.new('不明'),
   }.freeze
 
   def getStatus(status)

@@ -1,5 +1,5 @@
 class Normal
-  attr_reader :line
+  attr_reader :line, :delay_status
 
   def initialize(line)
     @line = line

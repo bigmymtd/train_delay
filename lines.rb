@@ -1,5 +1,5 @@
 module Lines
-  require './line.rb'
+  load './line.rb'
 
   LINES = {
       GINZA: Line.new(1, "東京メトロ銀座線", "とうきょうめとろぎんざせん"),

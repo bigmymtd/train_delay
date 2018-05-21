@@ -1,9 +1,10 @@
 module TrainDelayInfoRepository
   require 'csv'
-  require './lines.rb'
-  require './delay_statuses.rb'
-  require './delay_time.rb'
-  require './train_delay_list.rb'
+  load './lines.rb'
+  load './delay_statuses.rb'
+  load './delay_time.rb'
+  load './train_delay_list.rb'
+  load './train_statuses.rb'
   include Lines
   include DelayStatuses
   include TrainStatuses
@@ -14,7 +15,7 @@ module TrainDelayInfoRepository
     list = csv_data.map do |data|
       getTrainStatus(
           getLine(data[0]),
-          getStatus(data[1]),
+          getStatus(data[1]).status,
           DelayTime.new(data[2])
       )
     end

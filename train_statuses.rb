@@ -1,4 +1,9 @@
 module TrainStatuses
+  load './delay.rb'
+  load './normal.rb'
+  load './stop.rb'
+  load './unknown.rb'
+
   def getTrainStatus(line, delay_status, delay_time)
     case delay_status
     when '遅延'
